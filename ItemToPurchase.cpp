@@ -7,53 +7,57 @@
 using namespace std;
 
 
-ItemToPurchase::ItemToPurchase(string itemName, string itemDescription, double itemPrice, int itemQuantity) {
-	this->itemName = itemName;
-	this->itemDescription = itemDescription;
-	this->itemPrice = itemPrice;
-	this->itemQuantity = itemQuantity;
+ItemToPurchase::ItemToPurchase(string initialName, string initialDescription, double initialPrice, int initialQuantity) {
+	itemName = initialName;
+	itemDescription = initialDescription;
+	itemPrice = initialPrice;
+	itemQuantity = initialQuantity;
 }
 
 void ItemToPurchase::SetName(string nameToSet) {
-	this->itemName = nameToSet;
+	itemName = nameToSet;
 }
 
 string ItemToPurchase::GetName() {
-	return this->itemName;
+	return itemName;
 }
 
 void ItemToPurchase::SetDescription(string descriptionToSet) {
-	this->itemDescription = descriptionToSet;
+	itemDescription = descriptionToSet;
 }
 
 string ItemToPurchase::GetDescription() {
-	return this->itemName + ": " + this->itemDescription;
+	return itemDescription;
 }
 
 void ItemToPurchase::SetPrice(double priceToSet) {
-	this->itemPrice = priceToSet;
+	itemPrice = priceToSet;
 }
 
 double ItemToPurchase::GetPrice() {
-	return this->itemPrice;
+	return itemPrice;
 }
 
 void ItemToPurchase::SetQuantity(int quantityToSet) {
-	this->itemQuantity = quantityToSet;
+	itemQuantity = quantityToSet;
 }
 
 int ItemToPurchase::GetQuantity() {
-	return this->itemQuantity;
+	return itemQuantity;
 }
 
-string ItemToPurchase::GetCost() {
+string ItemToPurchase::PrintCost() {
 	ostringstream outString;
 
 	outString << fixed << setprecision(2)
-		<< this->itemName
-		<< " " << this->itemQuantity
-		<< " @ $"  << this->itemPrice
-		<< " = $" << this->itemQuantity*this->itemPrice;
+		<< itemName
+		<< " " << itemQuantity
+		<< " @ $"  << itemPrice
+		<< " = $" << itemQuantity*itemPrice;
 
 	return outString.str();
+}
+
+string ItemToPurchase::PrintDescription() {
+	return GetName() + ": " + GetDescription();
 }

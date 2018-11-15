@@ -16,7 +16,8 @@ class ItemToPurchase {
 		double GetPrice();
 		void SetQuantity(int quantityToSet);	
 		int GetQuantity();
-		string GetCost();
+		string PrintCost();
+		string PrintDescription();
 	private:
 		string itemName;
 		string itemDescription;

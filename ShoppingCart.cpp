@@ -5,36 +5,36 @@
 
 using namespace std;
 
-ShoppingCart::ShoppingCart(string customerName, string cartDate) {
-	this->customerName = customerName;
-	this->cartDate = cartDate;
+ShoppingCart::ShoppingCart(string initialName, string initialDate) {
+	customerName = initialName;
+	cartDate = initialDate;
 }
 
 string ShoppingCart::GetCustomer() {
-	return this->customerName;
+	return customerName;
 }
 
 string ShoppingCart::GetDate() {
-	return this->cartDate;
+	return cartDate;
 }
 
 void ShoppingCart::AddItem(ItemToPurchase newItem) {
-	for (int i = 0; i < this->itemsList.size(); i++) {
-		if (this->itemsList.at(i).GetName() == newItem.GetName()) {
+	for (int i = 0; i < itemsList.size(); i++) {
+		if (itemsList.at(i).GetName() == newItem.GetName()) {
 			cout << "Item is already in cart. Nothing added." << endl;
 			return;
 		}
 	}
-	this->itemsList.push_back(newItem);
+	itemsList.push_back(newItem);
 
 	return;
 	
 }
 
 void ShoppingCart::RemoveItem(string nameToRemove) {
-	for (int i = 0; i < this->itemsList.size(); i++) {
-		if (this->itemsList.at(i).GetName() == nameToRemove) {
-			this->itemsList.erase(itemsList.begin() + i);
+	for (int i = 0; i < itemsList.size(); i++) {
+		if (itemsList.at(i).GetName() == nameToRemove) {
+			itemsList.erase(itemsList.begin() + i);
 			return;
 		}
 	}
@@ -44,9 +44,9 @@ void ShoppingCart::RemoveItem(string nameToRemove) {
 }
 
 void ShoppingCart::UpdateItem(string nameToUpdate, int newQuantity) {
-	for (int i = 0; i < this->itemsList.size(); i++) {
-		if (this->itemsList.at(i).GetName() == nameToUpdate) {
-			this->itemsList.at(i).SetQuantity(newQuantity);
+	for (int i = 0; i < itemsList.size(); i++) {
+		if (itemsList.at(i).GetName() == nameToUpdate) {
+			itemsList.at(i).SetQuantity(newQuantity);
 			return;
 		}
 	}
@@ -58,7 +58,7 @@ void ShoppingCart::UpdateItem(string nameToUpdate, int newQuantity) {
 int ShoppingCart::GetNumItems() {
 	int totalItems = 0;
 
-	for (int i = 0; i < this->itemsList.size(); i++) {
+	for (int i = 0; i < itemsList.size(); i++) {
 		totalItems += itemsList.at(i).GetQuantity();
 	}
 
@@ -68,20 +68,20 @@ int ShoppingCart::GetNumItems() {
 double ShoppingCart::GetTotCost() {
 	double totalCost = 0;
 
-	for (int i = 0; i < this->itemsList.size(); i++) {
-		totalCost += this->itemsList.at(i).GetQuantity()*itemsList.at(i).GetPrice();
+	for (int i = 0; i < itemsList.size(); i++) {
+		totalCost += itemsList.at(i).GetQuantity()*itemsList.at(i).GetPrice();
 	}
 
 	return totalCost;
 }
 
 void ShoppingCart::PrintDescriptions() {
-	cout << this->customerName << "'s Shopping Cart - " << this->cartDate << endl;
+	cout << customerName << "'s Shopping Cart - " << cartDate << endl;
 
-	if(this->itemsList.size() > 0) {
+	if(itemsList.size() > 0) {
 		cout << "Item Descriptions" << endl;
-		for (int i = 0; i < this->itemsList.size(); i++) {
-			cout << this->itemsList.at(i).GetDescription() << endl;
+		for (int i = 0; i < itemsList.size(); i++) {
+			cout << itemsList.at(i).GetDescription() << endl;
 		}
 	}
 	else {
@@ -94,15 +94,15 @@ void ShoppingCart::PrintDescriptions() {
 }
 
 void ShoppingCart::PrintCart() {
-	cout << this->customerName << "'s Shopping Cart - " << this->cartDate << endl;
+	cout << customerName << "'s Shopping Cart - " << cartDate << endl;
 
-	if (this->itemsList.size() > 0) {
-		cout << "Number of Items: " << this->GetNumItems() << endl << endl;
-		for (int i = 0; i < this->itemsList.size(); i++) {
-			cout << this->itemsList.at(i).GetCost() << endl;
+	if (itemsList.size() > 0) {
+		cout << "Number of Items: " << GetNumItems() << endl << endl;
+		for (int i = 0; i < itemsList.size(); i++) {
+			cout << itemsList.at(i).PrintCost() << endl;
 		}
 		cout << endl
-			<< fixed << setprecision(2) << "Total: $" << this->GetTotCost() << endl << endl;
+			<< fixed << setprecision(2) << "Total: $" << GetTotCost() << endl << endl;
 	}
 	else {
 		cout << "Shopping cart is empty." << endl;
