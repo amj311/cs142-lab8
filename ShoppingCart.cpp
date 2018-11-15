@@ -81,7 +81,7 @@ void ShoppingCart::PrintDescriptions() {
 	if(itemsList.size() > 0) {
 		cout << "Item Descriptions" << endl;
 		for (int i = 0; i < itemsList.size(); i++) {
-			cout << itemsList.at(i).GetDescription() << endl;
+			cout << itemsList.at(i).PrintDescription() << endl;
 		}
 	}
 	else {

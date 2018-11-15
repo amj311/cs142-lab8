@@ -1,3 +1,38 @@
+/*
+___
+'-||__/__________
+  |==/|_|_|_|_|_/
+  |=/_|_|_|_|_|/
+  |/|_|_|_|_|_/
+  |_|_|_|_|_|/
+    )_____(_
+   [--------|
+   (o)""""(o)
+
+SHOPPING CART
+Created by: Arthur Judd, amjudd315@gmail.com
+Using: VS
+
+Multiple Test cases failed because I had written the following constructor in ShoppingCart.cpp:
+	
+	ShoppingCart::ShoppingCart(string customerName, string cartDate) {
+		customerName = customerName;
+		cartDate = cartDate;
+	}
+
+	This caused the program to simply asign the parameter values to themselves instead
+	of updating the private data members as intended. To solve the issue I had to
+	rename my parameters to be even more specific as to their purpose:
+
+	ShoppingCart::ShoppingCart(string initialName, string initialDate) {
+		customerName = initialName;
+		cartDate = initialDate;
+	}
+
+*/
+
+
+
 #include <iostream>
 #include <string>
 #include <iomanip>
